@@ -1,0 +1,98 @@
+[Quest. 03] JavaScript
+
+function removeDuplicateObjects(array, key1, key2) {
+  const myArray = array.filter((obj, index, self) => {
+    const foundIndex = self.findIndex((o) => o[key1] === obj[key1] && o[key2] === obj[key2]);
+    return index === foundIndex;
+  });
+  
+  return myArray.sort((a, b) => b[key2] - a[key2]);
+}
+
+const players = [
+    { name: 'Tom', score: 958},
+    { name: 'Amy', score: 942}, 
+    { name: 'Tom', score: 958},
+    { name: 'Jack', score: 1052},
+    
+    { name: 'Jack', score: 1052},
+];
+
+const result = removeDuplicateObjects(players, 'name', 'score');
+console.log(result);
+
+
+
+
+
+<!------------------------------------------------------------------!>
+function removeDuplicateObjects(array, key1, key2) {
+  const myArray = array.filter((obj, index, self) => {
+    const foundIndex = self.findIndex((o) => o[key1] === obj[key1] && o[key2] === obj[key2]);
+    return index === foundIndex;
+  });
+  
+  return myArray.sort((a, b) => b[key2] - a[key2]);
+}
+
+const players = [
+    { name: 'Tom', score: 958},
+    { name: 'Amy', score: 942}, 
+    { name: 'Tom', score: 958},
+    { name: 'Jack', score: 1052},
+    
+    { name: 'Jack', score: 1052},
+];
+
+const newPlayers = [
+    { name: "Amy", score: 942 },
+        { name: "Tom", score: 865 },
+        { name: "Tom", score: 958 },
+        { name: "Jack", score: 1052 },
+        { name: "Amy", score: 896 },
+        { name: "Tom", score: 743 },
+    ];
+
+const resultQuest3Number1 = removeDuplicateObjects(players, 'name', 'score');
+// number 1 answer
+console.log(resultQuest3Number1);
+
+
+
+const totalScore = newPlayers.reduce((sum, newPlayers) => sum + newPlayers.score, 0);
+// Number 2 answer
+console.log(totalScore);
+
+
+<!---------------------------------------------->
+(async function () {
+
+    console.log("first log");
+
+    //TODO
+     await new Promise(resolve => setTimeout(resolve, 2000));
+    console.log("second log");
+
+})();
+
+
+
+<!----------------------------------------------->
+
+(function () {
+  let nums = [15, 20, 35, 40, 65, 90, 10];
+
+  const negativeIndexHandler = {
+    get: function (target, prop) {
+      const index = parseInt(prop, 10);
+
+      const positiveIndex = index >= 0 ? index : target.length + index;
+      return target[positiveIndex];
+    },
+  };
+
+  const resultQuest6 = new Proxy(nums, negativeIndexHandler);
+
+  console.log(resultQuest6[-3]);
+})();
+
